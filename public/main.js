@@ -88,6 +88,7 @@ async function deleteData(idx) {
 	await fetch(url, {
 		method: "DELETE",
 	});
+	displayData();
 }
 
 function viewData(idx) {

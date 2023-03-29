@@ -177,6 +177,7 @@ app
 		const uid = req.params.id;
 		const index = req.params.index;
 		await deleteBookData(uid, index);
+		res.redirect(`/public/main?id=${uid}`);
 	});
 
 app.route("/public/main/details").get((req, res) => {
