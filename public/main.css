@@ -1,0 +1,68 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+header {
+	background-color: black;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+h1,
+h2 {
+	margin: auto;
+	width: fit-content;
+}
+
+.grid-container {
+	display: grid;
+}
+
+.input-container {
+	grid-template-columns: repeat(3, 4fr) 1fr;
+	grid-template-rows: repeat(2, auto);
+	margin: 10px;
+	gap: 20px;
+}
+
+input[type="text"] {
+	font-size: 1rem;
+	padding: 1rem;
+	width: 100%;
+}
+input[type="text"]:focus {
+	outline: none;
+	border-color: aquamarine;
+}
+
+input[type="submit"] {
+	border-radius: 5px;
+	background-color: yellowgreen;
+	color: white;
+	outline: none;
+	border: none;
+}
+
+table {
+	width: 100%;
+}
+table tr {
+	height: 2vw;
+}
+
+.true {
+	color: greenyellow;
+}
+
+.false {
+	color: red;
+}
+
+.right-align {
+	text-align: right;
+}
