@@ -26,3 +26,12 @@ cd mongoDB
 nodemon
 ```
 For better experience in using my mongoDB app (already set up for connection/server)
+
+Default account:
+
+![Default User Account](./assets/default_user_login.png)
+
+Default Book Data:
+
+
+![Default User Book](./assets//default_user_book.png)
