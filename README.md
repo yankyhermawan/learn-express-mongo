@@ -12,12 +12,17 @@
 
 user_login used for check user in login page, create a new table in books_collection if any user signed up. books_collection id is same of the user_login.
 
+## Sites
+
+mockAPI : https://w10-yankyhermawa.netlify.app
 
 ## Notes
 I'm haven't create handler for invalid email or password.
 
 In command prompt:
 ```
+cd mongoDB
+
 nodemon
 ```
-for better experience in using my mongoDB app
+For better experience in using my mongoDB app (already set up for connection/server)
