@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+body {
+	background-color: #f7c8e0;
+}
+:root {
+	font-size: 16px;
+}
+
+.grid-container {
+	display: grid;
+}
+
+.form-container {
+	grid-template-rows: auto;
+	grid-template-columns: max-content;
+	gap: 1em;
+}
+
+form {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	text-align: center;
+	background-color: white;
+	padding: 50px;
+	border-radius: 1em;
+	transition-duration: 1s;
+}
+
+input[type="text"],
+input[type="password"] {
+	outline: none;
+	text-align: center;
+	border: none;
+	padding: 0.5em;
+	border-radius: 2em;
+	background-color: #f6f6f6;
+	font-weight: 700;
+	font-size: large;
+}
+
+.form-text {
+	font-size: 2em;
+}
+
+.register-container {
+	text-align: left;
+}
+
+input[type="submit"] {
+	background-image: linear-gradient(to right, #be6db7, #bface2);
+	font-size: 1.25em;
+	border-radius: 2em;
+	padding: 0.25em;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+a {
+	color: blue;
+}
+
+.notif-text {
+	font-size: 0.4rem;
+}
+
+#email-notif-text,
+#pass-uppercase,
+#pass-lowercase,
+#pass-number {
+	text-align: left;
+}
+
+i {
+	font-size: 0.75em;
+}
+
+.false {
+	color: red;
+}
+
+.true {
+	color: lightgreen;
+}
