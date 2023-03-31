@@ -3,6 +3,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,7 @@ const client = new MongoClient(uri, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
+const jwtSecret = "This is Secret";
 
 async function checkUserLogin(user, pass) {
 	await client.connect();
@@ -92,12 +94,24 @@ app.get("/public", (req, res) => {
 	res.sendFile(filePath);
 });
 
-app.route("/public").post(async (req, res) => {
-	const { email, password } = req.body;
-	const status = await checkUserLogin(email, password);
-	if ((await status.length) === 1) {
-		const userID = status[0]._id;
-		res.redirect(`/public/main?id=${userID}`);
+app.route("/api/login").post(async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		const user = await checkUserLogin(email, password);
+
+		if (user.length === 0) {
+			return res.status(401).json({ error: "Invalid login credentials" });
+		}
+
+		const token = jwt.sign({ email: user.email }, jwtSecret, {
+			expiresIn: "1h",
+		});
+		const id = user[0]._id;
+		console.log(id);
+		res.json({ token, userID: id });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: "Server error" });
 	}
 });
 

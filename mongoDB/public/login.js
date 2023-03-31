@@ -6,6 +6,28 @@ document
 	.querySelector("#password")
 	.addEventListener("input", () => checkCredential("password"));
 
+document.querySelector("#btn").addEventListener("click", async () => {
+	const email = document.querySelector("#email").value;
+	const password = document.querySelector("#password").value;
+
+	const response = await fetch("http://localhost:3000/api/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ email: email, password: password }),
+	});
+
+	if (!response.ok) {
+		document.querySelector("#wrongInput").innerHTML = "Wrong Email or Password";
+		return;
+	}
+	const data = await response.json();
+	localStorage.setItem("token", data.token);
+	localStorage.setItem("userID", data.userID);
+	location.href = `http://localhost:3000/public/main?id=${data.userID}`;
+});
+
 function defaultFunction() {
 	const userID = localStorage.getItem("userID");
 	if (userID != null) {

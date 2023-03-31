@@ -21,11 +21,7 @@
 	<body>
 		<section>
 			<div class="main-container">
-				<form
-					class="form-container grid-container"
-					action="/public"
-					method="POST"
-				>
+				<div class="form-container grid-container" id="container">
 					<input type="hidden" id="status" />
 					<span class="form-text">Sign In</span>
 					<input
@@ -61,7 +57,8 @@
 						name="login"
 						disabled="true"
 					/>
-				</form>
+					<div id="wrongInput"></div>
+				</div>
 			</div>
 		</section>
 

@@ -14,14 +14,14 @@ user_login used for check user in login page, create a new table in books_collec
 
 ## Sites
 
-mockAPI : https://w10-yankyhermawa.netlify.app
+mockAPI : https://w10-yankyhermawan.netlify.app
 
-## Notes
-I'm haven't create handler for invalid email or password.
 
 In command prompt:
 ```
 cd mongoDB
+
+npm install
 
 nodemon
 ```
