@@ -12,9 +12,7 @@ document.querySelector("#logout").addEventListener("click", () => {
 
 async function getData(id) {
 	const response = await fetch(`http://localhost:3000/public/api/${id}`);
-	console.log(response);
 	const data = await response.json();
-	console.log(data);
 	return data;
 }
 
@@ -54,7 +52,6 @@ async function displayData() {
 	const queryParams = new URLSearchParams(queryString.substring(1));
 	const id = queryParams.get("id");
 	const data = await getData(id);
-	console.log(data);
 	const table = document.getElementById("data-table");
 	table.innerHTML = "";
 	const header = `<tr>

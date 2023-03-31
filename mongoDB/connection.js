@@ -72,17 +72,27 @@ async function deleteBookData(userID, indexToDelete) {
 	const collection = client.db("users").collection("books_collection");
 	const filter = { userID: userID };
 	const data = await getBooksCollection(userID);
-	const bookName = data[0].bookList[indexToDelete];
-	const bookRating = data[0].rating[indexToDelete];
-	const bookDescription = data[0].description[indexToDelete];
-	const itemToDelete = {
-		$pull: {
-			bookList: bookName,
-			rating: bookRating,
-			description: bookDescription,
+	const bookList = data[0].bookList;
+	const ratingList = data[0].rating;
+	const descriptionList = data[0].description;
+	const newBookList = bookList
+		.slice(0, indexToDelete)
+		.concat(bookList.slice(indexToDelete + 1));
+	const newRatingList = ratingList
+		.slice(0, indexToDelete)
+		.concat(ratingList.slice(indexToDelete + 1));
+	const newDescriptionList = descriptionList
+		.slice(0, indexToDelete)
+		.concat(descriptionList.slice(indexToDelete + 1));
+	console.log(newBookList, newDescriptionList, newRatingList);
+	const updated = {
+		$set: {
+			bookList: newBookList,
+			rating: newRatingList,
+			description: newDescriptionList,
 		},
 	};
-	collection.updateOne(filter, itemToDelete);
+	collection.updateOne(filter, updated);
 }
 
 app.get("/", (req, res) => {
