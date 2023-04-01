@@ -74,10 +74,39 @@ async function displayData() {
 						</td>
 						<td>
 						<input type = "submit" value = "View"onclick = "viewData(${i})">
+						<input type = "submit" value = "Delete"onclick = "deleteData(${i})">
 						</td>
 						</tr>`;
 	}
 	table.innerHTML += header + text;
+}
+
+async function deleteData(index) {
+	const id = sessionStorage.getItem("userID");
+	const response = await fetch(
+		`https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData/${id}`
+	);
+	const data = await response.json();
+	const titleList = data.title;
+	const descList = data.description;
+	const rateList = data.rating;
+	const removeTitle = titleList.splice(index, 1);
+	const removeDesc = descList.splice(index, 1);
+	const removeRating = rateList.splice(index, 1);
+	const header = {
+		method: "PUT",
+		headers: { "content-type": "application/json" },
+		body: JSON.stringify({
+			title: titleList,
+			description: descList,
+			rating: rateList,
+		}),
+	};
+	await fetch(
+		`https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData/${id}`,
+		header
+	);
+	window.location.reload();
 }
 
 function viewData(index) {
