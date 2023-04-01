@@ -2,6 +2,15 @@ document.querySelector("#btn").addEventListener("click", () => editData());
 const id = sessionStorage.getItem("userID");
 const index = parseInt(sessionStorage.getItem("viewDataIndex"));
 
+function showRateValue() {
+	document.querySelector("#rateValue").innerHTML =
+		document.querySelector("#rating").value;
+}
+
+document
+	.querySelector("#rating")
+	.addEventListener("input", () => showRateValue());
+
 async function getData() {
 	const url = `https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData/${id}`;
 	const response = await fetch(url);
@@ -34,3 +43,4 @@ async function editData() {
 }
 
 getData();
+showRateValue();
