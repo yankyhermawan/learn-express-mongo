@@ -35,3 +35,5 @@ Default Book Data:
 
 
 ![Default User Book](./assets//default_user_book.png)
+
+[![My Skills](https://skillicons.dev/icons?i=html,js,css,mongodb,express,vscode)](https://skillicons.dev)
