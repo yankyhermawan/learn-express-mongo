@@ -42,7 +42,7 @@ async function addData() {
 			rating: rateList,
 		}),
 	};
-	fetch(
+	await fetch(
 		`https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData/${id}`,
 		header
 	);

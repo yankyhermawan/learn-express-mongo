@@ -85,11 +85,21 @@ function checkCredential(id) {
 	}
 }
 
+async function checkUserExist(email) {
+	const url = "https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData";
+	const response = await fetch(url);
+	const data = await response.json();
+	if (data.some((obj) => Object.values(obj).includes(email))) {
+		alert("Email already used");
+	}
+}
+
 async function setAction() {
 	const url = "https://641ef92bad55ae01ccb3b13c.mockapi.io/user/userData";
 	const email = document.getElementById("email");
 	const password = document.getElementById("password");
 	const username = document.getElementById("username");
+	checkUserExist(email.value);
 	const data = {
 		email: email.value,
 		username: username.value,
@@ -98,7 +108,6 @@ async function setAction() {
 		description: [],
 		rating: [],
 	};
-	console.log(data);
 	const options = {
 		method: "POST",
 		headers: {
@@ -108,7 +117,9 @@ async function setAction() {
 	};
 	fetch(url, options)
 		.then((response) => response.json())
-		.then((data) => (window.location.href = "../login"))
+		.then((responseData) => {
+			window.location.href = "../login";
+		})
 		.catch((err) => console.error(err));
 }
 
