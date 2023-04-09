@@ -61,7 +61,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "nodemon connection.js"
+    "run": "nodemon connection.js",
+    "build": "npm run connection.js"
   },
   "author": "",
   "license": "ISC",
